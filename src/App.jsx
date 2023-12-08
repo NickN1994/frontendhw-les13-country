@@ -4,6 +4,7 @@ import worldmap from "./assets/world_map.png";
 import axios from "axios";
 import CountryTile from "./Components/CountryTile.jsx";
 import color from "./helpers/color.js";
+import countryTile from "./Components/CountryTile.jsx";
 
 function App() {
     const [countries, setCountries] = React.useState([]);
@@ -29,7 +30,9 @@ function App() {
 
                 <div className="box">
                 {countries.length > 0 &&
-                    countries.map((country) => {
+                    countries
+                        .sort((a, b) => a.population - b.population)
+                        .map((country) => {
                     return <li key={country.name.common} className='countryInfo'>
                         <CountryTile
                             img={country.flags.svg}
