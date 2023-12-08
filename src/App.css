@@ -44,3 +44,28 @@ li {
     display: flex;
     flex-direction: row;
 }
+
+.africa {
+    color: blue;
+    font-size: 2em;
+}
+
+.americas {
+    color: green;
+    font-size: 2em;
+}
+
+.asia {
+    color: red;
+    font-size: 2em;
+}
+
+.europe {
+    color: yellow;
+    font-size: 2em;
+}
+
+.oceania {
+    color: purple;
+    font-size: 2em;
+}

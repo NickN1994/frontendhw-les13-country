@@ -6,7 +6,7 @@ function CountryTile(props) {
         <div className="tile">
             <div className="innertile">
                 <img height="30" width="50" src={props.img} alt={props.alt} className="flag"/>
-                <p>{props.name} </p>
+                <p className={props.className}>{props.name}</p>
             </div>
             <p> Has a population of {props.population} people</p>
         </div>

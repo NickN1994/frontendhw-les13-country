@@ -3,6 +3,7 @@ import React from "react";
 import worldmap from "./assets/world_map.png";
 import axios from "axios";
 import CountryTile from "./Components/CountryTile.jsx";
+import color from "./helpers/color.js";
 
 function App() {
     const [countries, setCountries] = React.useState([]);
@@ -34,6 +35,7 @@ function App() {
                             img={country.flags.svg}
                             alt={"country flag"}
                             name={country.name.common}
+                            className={color(country.region)}
                             population={country.population}
                         />
                     </li>
