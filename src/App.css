@@ -1,17 +1,46 @@
 main {
     display: flex;
     flex-direction: column;
-    width: 850px;
+    width: 1200px;
     justify-content: center;
     align-items: center;
+}
+
+.worldMap {
+    width: 1000px;
 }
 
 button {
     width: 100px;
 }
 
+.box {
+    border: 1px solid red;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 li {
     list-style: none;
     border: 1px solid lightgray;
-    background: lightgray;
+    background: whitesmoke;
+    flex-shrink: 1;
+    margin: 15px;
+}
+
+.flag {
+    padding-right: 10px;
+}
+
+.tile {
+    margin: 15px;
+    width: 250px;
+}
+
+.innertile {
+    display: flex;
+    flex-direction: row;
 }

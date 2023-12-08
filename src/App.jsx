@@ -2,6 +2,7 @@ import './App.css';
 import React from "react";
 import worldmap from "./assets/world_map.png";
 import axios from "axios";
+import CountryTile from "./Components/CountryTile.jsx";
 
 function App() {
     const [countries, setCountries] = React.useState([]);
@@ -17,42 +18,29 @@ function App() {
     }
 
     return (
-        // <>
-        //     <main>
-        //         <img src={worldmap} alt="map of the world "/>
-        //         <h1>World Regions</h1>
-        //         <button type="button" onClick={() => fetchCountry()}>
-        //             Get info
-        //         </button>
-        //
-        //         {countries.length > 0 && (
-        //             <ul>
-        //                 <li key={countries[0].name.common}>
-        //                     <img height="30" width="50" src={countries[0].flags.svg} alt=""/>
-        //                     <p>{countries[0].name.common}</p>
-        //                     <p>Has a population of {countries[0].population} people</p>
-        //                 </li>
-        //             </ul>
-        //         )}
-        //     </main>
-        // </>
-
-        <>
+               <>
             <main>
-                <img src={worldmap} alt="map of the world "/>
+                <div className="header">
+                <img src={worldmap} alt="map of the world" className="worldMap"/>
                 <h1>World Regions</h1>
                 <button type='button' onClick={() => fetchCountry()}>Zoek Land</button>
+                </div>
 
-                {countries.length > 0 && (
-                    <li key={countries[0].name.common} className='countryInfo'>
-                        <div>
-                            <img height="30" width="50" src={countries[0].flags.svg} alt="country flag"/>
-                            <p>{countries[0].name.common}</p>
-                            <p>"Has a population of " {countries[0].population}</p>
-
-                    </div>
+                <div className="box">
+                {countries.length > 0 &&
+                    countries.map((country) => {
+                    return <li key={country.name.common} className='countryInfo'>
+                        <CountryTile
+                            img={country.flags.svg}
+                            alt={"country flag"}
+                            name={country.name.common}
+                            population={country.population}
+                        />
                     </li>
-                    )}
+                        })
+                    }
+                </div>
+
 
             </main>
         </>
