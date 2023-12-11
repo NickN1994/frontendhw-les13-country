@@ -4,10 +4,13 @@ import worldmap from "./assets/world_map.png";
 import axios from "axios";
 import CountryTile from "./Components/CountryTile.jsx";
 import color from "./helpers/color.js";
+import mathRound from "./helpers/mathRound.jsx";
 
 function App() {
     const [countries, setCountries] = React.useState([]);
     const [search, setSearch] = React.useState('');
+    const [countryData, setCountryData] = React.useState({});
+    const [error, setError] = React.useState('');
     const handleReset = () => {
         setCountries([]);
     };
@@ -16,19 +19,26 @@ function App() {
     async function fetchCountry() {
         try {
             const response = await axios.get('https://restcountries.com/v3.1/all');
-            console.log(response.data);
+            // console.log(response.data);
             setCountries(response.data);
         } catch (e) {
             console.error(e)
+
         }
     }
 
     async function searchCountry() {
+        setError('');
         try {
-            const searchResult = await axios.get('https://restcountries.com/v3.1/name/{name}');
-            setSearch(searchResult.name.common)
+            const searchResult = await axios.get(`https://restcountries.com/v3.1/name/${search}`);
+            console.log(searchResult.data[0])
+            setCountryData(searchResult.data[0])
+        } catch (e) {
+            console.error(e)
+            setError('Het ophalen van de data is mislukt. Misschien is er een typfout. De naam moet in het Engels zijn.')
         }
     }
+
 
     return (
         <>
@@ -61,15 +71,35 @@ function App() {
                 <div>
                     <h2>Search country information</h2>
                     <div className='searchbar'>
-                        <input type="text" placeholder="Bijvoorbeeld Nederland of Peru" className='searchField' on/>
-                        <button type='button' className='searchButton'>ZOEK</button>
+                        <input
+                            type="text"
+                            placeholder="Bijvoorbeeld Nederland of Peru"
+                            className='searchField'
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    searchCountry();
+                                }
+                            }}/>
+                        <button type='button' className='searchButton' onClick={searchCountry}>ZOEK</button>
+
                     </div>
+                    {error}
+                    {Object.keys(countryData).length > 0 && (
+                        <div className="boxresult">
+                            <div className="flag">
+                                <img height="30" width="50" src={countryData.flags.svg} alt="vlag"/>
+                                <h2>{countryData.name.common}</h2>
+                            </div>
+                            {mathRound(countryData)}
+                        </div>
+                    )
+                    }
+
                 </div>
-
-
             </main>
         </>
-
 
     )
 }
