@@ -1,0 +1,105 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.worldMap {
+    width: 1000px;
+}
+
+button {
+    width: 100px;
+}
+
+.box {
+    border: 1px solid red;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+li {
+    list-style: none;
+    border: 1px solid lightgray;
+    background: whitesmoke;
+    flex-shrink: 1;
+    margin: 15px;
+}
+
+.flag {
+    padding-right: 10px;
+}
+
+.tile {
+    margin: 15px;
+    width: 250px;
+}
+
+.innertile {
+    display: flex;
+    flex-direction: row;
+}
+
+.africa {
+    color: blue;
+    font-size: 2em;
+}
+
+.americas {
+    color: green;
+    font-size: 2em;
+}
+
+.asia {
+    color: red;
+    font-size: 2em;
+}
+
+.europe {
+    color: yellow;
+    font-size: 2em;
+}
+
+.oceania {
+    color: purple;
+    font-size: 2em;
+}
+
+.searchField {
+    padding: 10px 75px;
+    border: 1px solid blue;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+}
+
+.searchField::placeholder {
+    text-align: left;
+}
+
+.searchButton {
+    padding: 12px 20px;
+    margin-left: -5px;
+    background: lightgreen;
+    border: none;
+}
+
+.boxresult {
+    margin: 25px;
+}
+
+.flag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flag h2 {
+    padding-left: 10px;
+    font-size: 2em;
+}
